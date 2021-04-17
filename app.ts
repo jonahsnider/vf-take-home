@@ -12,7 +12,7 @@ const app = express();
 // Express configuration
 app.use(express.static('static'));
 app.set('port', 4000);
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**
  * Primary app routes.
  */
-app.get('/', (_, res) => res.sendFile(path.join(`${__dirname}/index.html`)));
+app.get('/', (_, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 app.post('/message', (req, res) => {
   console.log(req.body);
