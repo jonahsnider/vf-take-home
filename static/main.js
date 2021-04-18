@@ -20,7 +20,10 @@ const addSenderMessage = (message, time = defaultTime) => {
   `);
 };
 
-const addRecieverMessage = (message, time = defaultTime) => {
+const addRecieverMessage = (message) => {
+  const now = new Date();
+  const time = `${now.toLocaleTimeString()} | ${now.toLocaleDateString()}`;
+
   $chat.prepend(`
     <div class="media w-50 ml-auto mb-2">
       <div class="media-body">
