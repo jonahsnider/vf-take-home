@@ -10,9 +10,9 @@ export interface WebMessage {
 }
 
 /**
- * The response from VoiceFlow's stateless API interact route.
+ * The response from Voiceflow's stateless API interact route.
  */
-export interface VoiceFlowState {
+export interface VoiceflowState {
   request:
     | {
         type: 'text';

@@ -2,4 +2,4 @@
 
 Export all the services.
 
-- `voiceFlow.ts` - VoiceFlow
+- `voiceflow.ts` - Voiceflow

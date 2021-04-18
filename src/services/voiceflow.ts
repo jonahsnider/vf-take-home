@@ -3,11 +3,11 @@
 import assert from 'assert';
 import got from 'got';
 
-import { voiceFlow } from '../config';
+import { voiceflow } from '../config';
 import sessions from '../db';
-import type { VoiceFlowState, WebMessage } from '../types/common';
+import type { VoiceflowState, WebMessage } from '../types/common';
 
-const http = got.extend({ prefixUrl: 'https://general-runtime.voiceflow.com', headers: { Authorization: voiceFlow.apiKey } });
+const http = got.extend({ prefixUrl: 'https://general-runtime.voiceflow.com', headers: { Authorization: voiceflow.apiKey } });
 
 interface Response {
   content: string;
@@ -20,7 +20,7 @@ export async function respond(context: WebMessage): Promise<Response[]> {
   if (!sessions.has(context.userID)) {
     // Create initial state if new session
 
-    const response = await http.get<VoiceFlowState>(`interact/${voiceFlow.versionId}/state`, { responseType: 'json' });
+    const response = await http.get<VoiceflowState>(`interact/${voiceflow.versionId}/state`, { responseType: 'json' });
 
     // Store session in DB
     sessions.set(context.userID, { state: response.body });
@@ -31,7 +31,7 @@ export async function respond(context: WebMessage): Promise<Response[]> {
   assert(user);
 
   // Send the user's message
-  const response = await http.post<VoiceFlowState>(`interact/${voiceFlow.versionId}`, {
+  const response = await http.post<VoiceflowState>(`interact/${voiceflow.versionId}`, {
     json: {
       request: {
         type: 'text',

@@ -1,9 +1,9 @@
-import type { VoiceFlowState } from './types/common';
+import type { VoiceflowState } from './types/common';
 
 export type UserId = string;
 
 export interface Session {
-  state: VoiceFlowState;
+  state: VoiceflowState;
 }
 
 /** "Database" */

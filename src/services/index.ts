@@ -1,1 +1,1 @@
-export * as voiceFlow from './voiceFlow';
+export * as voiceflow from './voiceflow';
