@@ -2,7 +2,9 @@ const userID = Math.random().toString(36).substring(7);
 
 const $chat = $('#chat');
 
-const addSenderMessage = (message, time = '12:00 PM | April 1') => {
+const defaultTime = '6:07:17 PM | 4/17/2021';
+
+const addSenderMessage = (message, time = defaultTime) => {
   $chat.prepend(`
     <div class="media w-33 mb-2">
       <img
@@ -18,7 +20,7 @@ const addSenderMessage = (message, time = '12:00 PM | April 1') => {
   `);
 };
 
-const addRecieverMessage = (message, time = '12:00 PM | April 1') => {
+const addRecieverMessage = (message, time = defaultTime) => {
   $chat.prepend(`
     <div class="media w-50 ml-auto mb-2">
       <div class="media-body">
@@ -57,7 +59,7 @@ $('#message').submit(async (e) => {
     success: async (response) => {
       for (const responseMessage of response) {
         await delay(100);
-        addSenderMessage(responseMessage);
+        addSenderMessage(responseMessage.content, responseMessage.dateTime);
       }
     },
     error() {

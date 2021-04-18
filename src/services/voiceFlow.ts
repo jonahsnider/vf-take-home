@@ -2,8 +2,19 @@
 
 import type { WebMessage } from '../types/common';
 
-export function respond(message: WebMessage): string[] {
+interface Response {
+  content: string;
+  dateTime: `${string} | ${string}`;
+}
+
+export function respond(message: WebMessage): Response[] {
   console.log(message);
 
-  return ['hello world!', 'goodbye'];
+  const now = new Date();
+  const dateTime = `${now.toLocaleTimeString()} | ${now.toLocaleDateString()}` as const;
+
+  return [
+    { content: 'hello world!', dateTime },
+    { content: 'goodbye', dateTime },
+  ];
 }
