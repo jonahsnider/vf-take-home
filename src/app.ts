@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 
+import * as routes from './routes';
+
 // load in environment variables from .env file
 dotenv.config();
 
@@ -15,17 +17,8 @@ app.set('port', 4000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/**
- * Primary app routes.
- */
+// Routes
 app.get('/', (_, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-app.post('/message', (req, res) => {
-  console.log(req.body);
-
-  // TODO: implement route
-
-  res.send(['hello world!', 'goodbye']);
-});
+app.post('/message', routes.onMessage);
 
 export default app;
