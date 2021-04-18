@@ -1,12 +1,8 @@
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 
 import * as routes from './routes';
-
-// load in environment variables from .env file
-dotenv.config();
 
 // Create Express server
 const app = express();

@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+
+// load in environment variables from .env file
+dotenv.config();
+
+// eslint-disable-next-line import/first
 import app from './src/app';
 
 /**
