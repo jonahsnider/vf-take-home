@@ -43,15 +43,15 @@ export async function respond(context: WebMessage): Promise<Response[]> {
   });
 
   // To keep things simple I just display this as text, rich content like images or a select array aren't supported
-  const replyHtml = response.body.state.storage.output;
+  const replyXml = response.body.state.storage.output;
 
-  // Format the reply HTML into plain text
-  const plainReply: string[] = replyHtml
+  // Format the reply XML into plain text
+  const plainReply: string[] = replyXml
     // Bug??
     // Every response started with the string "undefined"...
     .slice('undefined'.length)
-    // Response is HTML that is in this format
-    // Don't actually parse HTML with regex
+    // Response is XML that is in this format
+    // Don't actually parse XML with regex
     .replace(/<voice name="Alexa">/g, '\n')
     .replace(/<\/voice>/g, '')
     // Remove leading newline
